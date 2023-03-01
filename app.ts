@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 
 import todoRouter from "./routes/todoRouter";
 import userRouter from "./routes/userRouter";
+import dailyscrumRouter from "./routes/dailyscrumRouter";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use("/todos", todoRouter);
 app.use("/users", userRouter);
+app.use("/boogako/dailyscrum", dailyscrumRouter);
 
 app.use((req, res, next) => {
   next(createError(404));
