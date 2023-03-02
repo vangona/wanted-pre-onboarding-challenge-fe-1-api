@@ -6,12 +6,15 @@ import path from "path";
 
 import type { Todo } from "../types/todos";
 import type { User } from "../types/users";
+import { GroupSnapshot } from "../types/groups";
 
 const __dirname = path.resolve();
 
 export interface Data {
   todos: Todo[];
   users: User[];
+  dailyscrum_members: string[];
+  dailyscrum_group_snapshots: GroupSnapshot[];
 }
 
 export let db: Low<Data>;
@@ -42,7 +45,12 @@ export const createConnection = async () => {
   // Read data from JSON file, this will set db.data content
   await db.read();
 
-  db.data ||= { todos: [], users: [] };
+  db.data ||= {
+    todos: [],
+    users: [],
+    dailyscrum_members: [],
+    dailyscrum_group_snapshots: [],
+  };
   // Write db.data content to db.json
   await db.write();
 };
