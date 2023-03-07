@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/members", dailyscrumController.getMembers);
 router.get("/groups", dailyscrumController.getGroups);
-router.post("/groups", dailyscrumController.createGroups);
+router.get("/new-groups", dailyscrumController.createGroups);
 
 export default router;
